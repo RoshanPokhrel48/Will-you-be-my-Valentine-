@@ -13,6 +13,7 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
+  padding: 0 10px; /* small padding for mobile */
 }
 
 .header_text {
@@ -61,7 +62,7 @@ body {
 /* GIF styling */
 .gif_container img {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px; /* smaller max width for mobile */
   height: auto;
   border-radius: 10px;
   margin-top: 20px;
@@ -100,4 +101,21 @@ body {
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(-20px);}
   100% { opacity: 1; transform: translateY(0);}
+}
+
+/* ========== Mobile Responsiveness ========== */
+@media (max-width: 480px) {
+  .header_text {
+    font-size: 2em;
+  }
+  .quote {
+    font-size: 1.1em;
+  }
+  .heart-photo {
+    width: 180px;
+    height: 180px;
+  }
+  .gif_container img {
+    max-width: 300px;
+  }
 }
