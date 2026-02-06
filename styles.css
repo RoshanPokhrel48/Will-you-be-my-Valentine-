@@ -7,18 +7,23 @@ body {
   background-color: #f9e3e3;
   font-family: 'Arial', sans-serif;
   flex-direction: column;
+  overflow: hidden; /* prevent overflow on mobile */
 }
 
 .container {
   text-align: center;
+  padding: 0 10px; /* small padding for mobile */
 }
 
+/* Header */
 h1 {
   font-size: 2.5em;
   color: #d32f2f;
+  margin-bottom: 15px;
+  animation: fadeIn 2s ease forwards;
 }
 
-/* ❤️ Heart Photo Container */
+/* Heart Photo Container */
 .photo-container {
   margin: 20px 0;
   display: flex;
@@ -26,16 +31,16 @@ h1 {
   position: relative;
 }
 
-/* ❤️ Heart-shaped Photo using SVG mask */
+/* Heart-shaped Photo */
 .valentine-photo {
-  width: 220px;  /* bigger size */
+  width: 220px;  
   height: 220px;
   object-fit: cover;
   border: 4px solid pink;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 
-  /* mask the photo into a heart shape */
+  /* SVG Mask for smooth heart shape */
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M256 472s-16-14-37-34C124 346 24 252 24 152 24 84 84 24 152 24c42 0 81 25 104 64 23-39 62-64 104-64 68 0 128 60 128 128 0 100-100 194-195 286-21 20-37 34-37 34z"/></svg>');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: cover;
@@ -46,7 +51,6 @@ h1 {
   mask-position: center;
 }
 
-/* Optional hover effect */
 .valentine-photo:hover {
   transform: scale(1.05);
 }
@@ -56,30 +60,55 @@ h1 {
   margin-top: 20px;
 }
 
-.yes-button {
+.yes-button, .no-button {
   font-size: 1.5em;
   padding: 10px 20px;
-  margin-right: 10px;
-  background-color: #4caf50;
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin: 5px;
+}
+
+.yes-button {
+  background-color: #4caf50;
+  color: white;
 }
 
 .no-button {
-  font-size: 1.5em;
-  padding: 10px 20px;
   background-color: #f44336;
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
+/* GIF Styling */
 .gif_container img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 400px; /* smaller max width for mobile */
   height: auto;
   border-radius: 10px;
   margin-top: 20px;
+  animation: fadeIn 2s ease forwards;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+  .valentine-photo {
+    width: 180px;
+    height: 180px;
+  }
+  .gif_container img {
+    max-width: 300px;
+  }
+  .yes-button, .no-button {
+    font-size: 1.2em;
+    padding: 8px 16px;
+  }
 }
