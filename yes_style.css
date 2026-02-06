@@ -1,24 +1,87 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f9e3e3;
-    font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f9e3e3;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
 }
 
 .container {
-    text-align: center;
+  text-align: center;
+  position: relative;
 }
 
 .header_text {
-    font-size: 3em;
-    color: #d32f2f;
+  font-size: 3em;
+  color: #d32f2f;
+  margin-bottom: 20px;
 }
 
+/* Heart-shaped photo of you together */
+.photo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.heart-photo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 4px solid pink;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  border-radius: 50%; /* fallback for circular shape */
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M256 472s-16-14-37-34C124 346 24 252 24 152 24 84 84 24 152 24c42 0 81 25 104 64 23-39 62-64 104-64 68 0 128 60 128 128 0 100-100 194-195 286-21 20-37 34-37 34z"/></svg>');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M256 472s-16-14-37-34C124 346 24 252 24 152 24 84 84 24 152 24c42 0 81 25 104 64 23-39 62-64 104-64 68 0 128 60 128 128 0 100-100 194-195 286-21 20-37 34-37 34z"/></svg>');
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center;
+  transition: transform 0.3s ease;
+}
+
+.heart-photo:hover {
+  transform: scale(1.05);
+}
+
+/* GIF styling */
 .gif_container img {
-    width: 100%; 
-    max-width: 500px; 
-    height: auto; 
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Floating hearts animation */
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hearts span {
+  position: absolute;
+  font-size: 2em;
+  animation: float 5s linear infinite;
+}
+
+.hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.hearts span:nth-child(2) { left: 30%; animation-delay: 1s; }
+.hearts span:nth-child(3) { left: 50%; animation-delay: 2s; }
+.hearts span:nth-child(4) { left: 70%; animation-delay: 3s; }
+.hearts span:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
 }
