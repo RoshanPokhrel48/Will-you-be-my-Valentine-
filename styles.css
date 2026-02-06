@@ -18,13 +18,21 @@ h1 {
   color: #d32f2f;
 }
 
-/* Heart-shaped photo with slightly bigger size */
+/* ❤️ Heart Photo Container */
+.photo-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* ❤️ Heart-shaped Photo */
 .valentine-photo {
-  width: 220px;       /* bigger width */
-  height: 220px;      /* bigger height */
+  width: 220px; /* bigger size */
+  height: 220px;
   object-fit: cover;
 
-  /* Smooth heart shape */
+  /* Heart shape using polygon */
   clip-path: polygon(
     50% 0%, 61% 10%, 68% 20%, 70% 30%, 70% 40%, 
     65% 50%, 55% 60%, 50% 65%, 45% 60%, 35% 50%, 
@@ -36,25 +44,12 @@ h1 {
   transition: transform 0.3s ease;
 }
 
-/* Optional hover effect */
+/* Optional: Slight zoom on hover */
 .valentine-photo:hover {
   transform: scale(1.05);
 }
 
-
-  /* Heart Shape */
-  clip-path: path(
-    "M90 160 
-     C20 110, 0 60, 45 30
-     C70 5, 90 25, 90 40
-     C90 25, 110 5, 135 30
-     C180 60, 160 110, 90 160 Z"
-  );
-
-  border: 4px solid pink;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.3);
-}
-
+/* Buttons */
 .buttons {
   margin-top: 20px;
 }
