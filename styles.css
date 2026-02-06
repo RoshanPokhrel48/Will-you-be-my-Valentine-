@@ -26,25 +26,27 @@ h1 {
   position: relative;
 }
 
-/* ❤️ Heart-shaped Photo */
+/* ❤️ Heart-shaped Photo using SVG mask */
 .valentine-photo {
-  width: 220px; /* bigger size */
+  width: 220px;  /* bigger size */
   height: 220px;
   object-fit: cover;
-
-  /* Heart shape using polygon */
-  clip-path: polygon(
-    50% 0%, 61% 10%, 68% 20%, 70% 30%, 70% 40%, 
-    65% 50%, 55% 60%, 50% 65%, 45% 60%, 35% 50%, 
-    30% 40%, 30% 30%, 32% 20%, 39% 10%
-  );
-
   border: 4px solid pink;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+
+  /* mask the photo into a heart shape */
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M256 472s-16-14-37-34C124 346 24 252 24 152 24 84 84 24 152 24c42 0 81 25 104 64 23-39 62-64 104-64 68 0 128 60 128 128 0 100-100 194-195 286-21 20-37 34-37 34z"/></svg>');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M256 472s-16-14-37-34C124 346 24 252 24 152 24 84 84 24 152 24c42 0 81 25 104 64 23-39 62-64 104-64 68 0 128 60 128 128 0 100-100 194-195 286-21 20-37 34-37 34z"/></svg>');
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center;
 }
 
-/* Optional: Slight zoom on hover */
+/* Optional hover effect */
 .valentine-photo:hover {
   transform: scale(1.05);
 }
